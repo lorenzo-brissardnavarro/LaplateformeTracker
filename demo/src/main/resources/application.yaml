@@ -1,3 +1,11 @@
 spring:
   application:
     name: demo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/laplateformetracker
+    username: postgres
+    password: MDPbdd*2026
+  jpa:
+    hibernate:
+    ddl-auto: update
+    show-sql: true
