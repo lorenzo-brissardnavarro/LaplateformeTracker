@@ -7,5 +7,5 @@ spring:
     password: MDPbdd*2026
   jpa:
     hibernate:
-    ddl-auto: update
+      ddl-auto: update
     show-sql: true
