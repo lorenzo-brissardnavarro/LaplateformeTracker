@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity 
 public class Grade {
@@ -17,6 +19,11 @@ public class Grade {
 
     @Column(nullable = false)
     private float value;
+
+    // Many-to-One relationship with Student
+    @ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
+    @JoinColumn(name = "student_id", nullable = false, referencedColumnName = "id")
+    private Student student;
 
     // Empty constructor
     public Grade() {

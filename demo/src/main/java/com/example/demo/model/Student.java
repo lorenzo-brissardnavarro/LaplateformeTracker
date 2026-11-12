@@ -2,24 +2,60 @@ package com.example.demo.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import java.util.List;
 
 @Entity 
 public class Student {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    private Long id;
     @Column(unique = true)
+    private Long id;
 
+    @Column(nullable = false)
     private String first_name;
+
+    @Column(nullable = false)
     private String last_name;
+
+    @Column(nullable = false)
     private int age;
+
+    @Column(unique = true, nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private String role;
 
+    // One-to-Many relationship with Grade
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id")
+    private List<Grade> grades;
 
+    // Empty constructor
+    public Student() {
+    }
+
+    // Constructor with parameters
+    public Student(String first_name, String last_name, int age, String email, String password, String role) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.age = age;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
