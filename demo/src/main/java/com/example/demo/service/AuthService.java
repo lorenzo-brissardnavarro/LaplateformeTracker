@@ -36,7 +36,7 @@ public class AuthService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) {
         Student student = studentRepository.findByEmail(email);
         if (student == null) {
-            throw new UsernameNotFoundException("Student not found with email: " + email);
+            throw new UsernameNotFoundException("Utilisateur non trouvé avec l'email : " + email);
         }
         return User.withUsername(student.getEmail())
                 .password(student.getPassword())

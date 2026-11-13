@@ -23,7 +23,7 @@ public class SecurityConfig {
             // Configure personalized form login
             .formLogin(form -> form
                 .loginPage("/login")
-                .defaultSuccessUrl("/dashboard", true)
+                .defaultSuccessUrl("/intranet", true)
                 .permitAll()
             )
             .logout(logout -> logout.permitAll());
