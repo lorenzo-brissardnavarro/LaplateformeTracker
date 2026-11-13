@@ -33,7 +33,7 @@ public class Student {
     private String password;
 
     @Column(nullable = false)
-    private String role;
+    private String role = "STUDENT";
 
     // One-to-Many relationship with Grade
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

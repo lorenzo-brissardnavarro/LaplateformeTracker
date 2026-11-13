@@ -16,17 +16,17 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 // Allow access to the registration and login pages without authentication
-                .requestMatchers("/register", "/login").permitAll()
+                .requestMatchers("/", "/register", "/login").permitAll()
                 // All other requests require authentication
                 .anyRequest().authenticated()
             )
             // Configure personalized form login
-            .formLogin((form) -> form
+            .formLogin(form -> form
                 .loginPage("/login")
                 .defaultSuccessUrl("/dashboard", true)
                 .permitAll()
             )
-            .logout((logout) -> logout.permitAll());
+            .logout(logout -> logout.permitAll());
 
         return http.build();
     }

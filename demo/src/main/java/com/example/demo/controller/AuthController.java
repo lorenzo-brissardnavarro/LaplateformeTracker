@@ -17,6 +17,12 @@ public class AuthController {
     public AuthController(AuthService authService) {
         this.authService = authService;
     }
+
+    // Redirect the root URL to the registration page
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/register";
+    }
     
     // Display the registration page
     @GetMapping("/register")
